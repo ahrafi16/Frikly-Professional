@@ -1,6 +1,7 @@
 import { IoBed } from "react-icons/io5";
 import { TbSettingsCode,TbTruckDelivery  } from "react-icons/tb";
 import { MdDiscount } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 const Membership = () => {
@@ -14,7 +15,7 @@ const Membership = () => {
                     <p className="max-w-2/3 mx-auto">
                         &#39;Frikly Memberships&#39;, a step ahead of everyone - it&#39;s a premium club only for Professionals like you. It is the place to gain access to the inaccessible, to
                         discover rare finds, to be the first to receive news and offers for your chosen projects.</p>
-                    <button className="btn bg-orange-500 border-none text-white shadow-2xl shadow-black rounded-xl">Become a member</button>
+                    <Link to="/register"><button onClick={()=>{window.scrollTo(0,0)}} className="btn bg-orange-500 border-none text-white shadow-2xl shadow-black rounded-xl">Become a member</button></Link>
                 </div>
                 <div>
                     <img className="rounded-full max-h-svh w-full" src="https://designage.com.bd/wp-content/uploads/2023/08/Sofa-With-Divan.png" alt="" />

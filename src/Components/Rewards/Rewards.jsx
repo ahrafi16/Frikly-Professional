@@ -2,6 +2,7 @@ import { LuHandshake } from "react-icons/lu";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { SiMaterialdesignicons } from "react-icons/si";
 import { FaHandshake } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const Rewards = () => {
     return (
         <div>
@@ -55,7 +56,7 @@ const Rewards = () => {
                     </div>
                     <div className="mt-4 space-y-3">
                         <h1 className="font-bold text-4xl">Welcome Home!</h1>
-                        <button className="btn bg-orange-500 border-none text-white shadow-2xl shadow-black rounded-xl">Join Now</button>
+                        <Link to="/login"><button onClick={()=>{window.scrollTo(0,0)}} className="btn bg-orange-500 border-none text-white shadow-2xl shadow-black rounded-xl">Join Now</button></Link>
                     </div>
                 </div>
             </div>
