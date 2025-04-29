@@ -1,8 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TEInput, TERipple } from "tw-elements-react";
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext, useState } from "react";
+import { FaEyeSlash } from "react-icons/fa6";
+
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+    const { userLogIn, setUser } = useContext(AuthContext);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        userLogIn(email, password)
+            .then((result) => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setUser(loggedUser);
+                navigate("/");
+                form.reset();
+            })
+            .catch((error) => {
+                alert(error.message);
+            })
+    }
     return (
         <section className="mt-3">
             <div className="container h-full px-6 py-10">
@@ -18,10 +46,11 @@ const Login = () => {
 
                     {/* <!-- Right column container with form --> */}
                     <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
-                    <h1 className="text-2xl text-center font-bold text-orange-500 mb-2">Login now!</h1>
-                        <form>
+                        <h1 className="text-2xl text-center font-bold text-orange-500 mb-2">Login now!</h1>
+                        <form onSubmit={handleSubmit}>
                             {/* <!-- Email input --> */}
                             <TEInput
+                                name="email"
                                 type="email"
                                 label="Email address"
                                 size="lg"
@@ -29,12 +58,21 @@ const Login = () => {
                             ></TEInput>
 
                             {/* <!--Password input--> */}
-                            <TEInput
-                                type="password"
-                                label="Password"
-                                className="mb-6"
-                                size="lg"
-                            ></TEInput>
+                            <div className="relative mb-6">
+                                <TEInput
+                                    name="password"
+                                    type={showPassword ? "text" : "password"}
+                                    label="Password"
+                                    className="pr-10" // Add padding to avoid overlap with the icon
+                                    size="lg"
+                                />
+                                <span
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
 
                             {/* <!-- Remember me checkbox --> */}
                             <div className="mb-6 flex items-center justify-between">
@@ -67,7 +105,7 @@ const Login = () => {
 
                             <TERipple rippleColor="light" className="w-full">
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="inline-block w-full rounded bg-orange-500 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                                 >
                                     Sign in

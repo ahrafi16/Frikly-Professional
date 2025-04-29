@@ -31,7 +31,7 @@ const Rewards = () => {
             </div>
             <div className=" my-3 p-8">
                 <div className="text-center space-y-5 p-5">
-                    <h1 className="text-2xl  font-bold text-orange-500">Samrt tools exxlusively Designed for Professionals</h1>
+                    <h1 className="text-2xl  font-bold text-orange-500">Smart tools exlusively Designed for Professionals</h1>
                     <div className="grid grid-cols-2 gap-10 md:grid-cols-4 cursor-pointer">
                         <div className="text-center flex flex-col justify-center items-center space-y-3">
                             <LuHandshake className="text-9xl p-2 w-full text-white rounded-xl bg-[#46635b]" />

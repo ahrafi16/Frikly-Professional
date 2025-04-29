@@ -20,10 +20,11 @@ const Footer = () => {
                         <p>Frikly is a one-stop destination for everthing a home needs and <br /> assists anyone, anywhere, to get the feel just like your home.</p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-3">
-                        <FaFacebookF></FaFacebookF>
+                        <a target="_blank" href="https://www.facebook.com/anjumhossain.rafi/"><FaFacebookF></FaFacebookF></a>
                         <FaInstagram ></FaInstagram>
                         <FaTwitter  ></FaTwitter>
-                        <FaLinkedin   ></FaLinkedin>
+                        <a target="_blank" href="https://www.linkedin.com/in/anjum-hossain-519a192b2/"><FaLinkedin   ></FaLinkedin></a>
+
                     </div>
                 </div>
                 <div className="text-center">
